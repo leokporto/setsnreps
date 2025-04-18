@@ -1,4 +1,4 @@
-# SetsnReps 🏋️‍♂️📲
+# Sets n' Reps 🏋️‍♂️📲
 
 **SetsnReps** is a workout tracking app (inspired by Hevy), built using .NET 8 and Blazor WebAssembly.  
 The entire project is being documented through a YouTube series on [@dotnetOnTap](https://www.youtube.com/@dotnetOnTap), where we combine .NET, coding, beer, fitness, and more.
