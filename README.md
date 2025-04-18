@@ -42,11 +42,12 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
 
 ---
 
-🎥 Follow the Series
-📺 YouTube - @dotnetOnTap
+## 🎥 Follow the Series
+📺 YouTube - [@dotnetOnTap](https://www.youtube.com/@dotnetOnTap)
 Weekly updates, deep-dives, and hands-on development
 
 
