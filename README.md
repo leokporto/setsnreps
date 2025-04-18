@@ -46,6 +46,26 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 
 ---
 
+## 🧪 Running Locally
+
+### Backend (API)
+
+```bash
+cd backend/SetsnReps.Api
+dotnet run
+```
+
+Make sure PostgreSQL is running and the connection string is configured in appsettings.json.
+
+### Frontend (Blazor)
+
+```bash
+cd frontend/SetsnReps.Web
+dotnet run
+```
+
+---
+
 ## 🎥 Follow the Series
 📺 YouTube - [@dotnetOnTap](https://www.youtube.com/@dotnetOnTap)
 Weekly updates, deep-dives, and hands-on development

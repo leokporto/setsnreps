@@ -1,0 +1,6 @@
+@SetsnReps.API_HostAddress = http://localhost:5274
+
+GET {{SetsnReps.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
