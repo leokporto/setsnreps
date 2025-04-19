@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f352f7f8177792de09ff8074ee4bfecb59a5252b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9641675e24068df3e05e5993aef8dbd9572c25dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
