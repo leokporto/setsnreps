@@ -1,6 +1,6 @@
 using SetsnReps.Core.Enums;
 
-namespace SetsnReps.Core.Models;
+namespace SetsnReps.Core.Models.Exercise;
 
 /// <summary>
 /// Representation of an exercise.
@@ -22,7 +22,7 @@ public class Exercise
     /// </summary>
     public string ThumbnailUri { get; set; } = string.Empty;
     
-    public eEquipmentType EquipmentType { get; set; }
+    public EquipmentType EquipmentType { get; set; }
     
     public MuscleGroup PrimaryMuscleGroup { get; set; }
 }

@@ -34,11 +34,11 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 ```plaintext
 /setsnreps
 ├── backend/
-│   ├── SetsnReps.Api/
-│   ├── SetsnReps.Domain/
-│   └── SetsnReps.Infrastructure/
+│   └── SetsnReps.Api/
 ├── frontend/
 │   └── SetsnReps.Web/
+├── shared/
+│   └── SetsnReps.Core/
 ├── README.md
 ├── LICENSE
 └── .gitignore

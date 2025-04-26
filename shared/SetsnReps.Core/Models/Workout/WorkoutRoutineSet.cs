@@ -1,7 +1,8 @@
-namespace SetsnReps.Core.Models;
+namespace SetsnReps.Core.Models.Workout;
 
 /// <summary>
-/// A set (or collection) of workout routines.
+/// A set (or collection) of workout routines. <br/>
+/// E.g.: Routine ABCDE (Feb/2025)
 /// </summary>
 public class WorkoutRoutineSet
 {
