@@ -34,4 +34,5 @@ public class ExerciseSet
     public Guid WorkoutExerciseId { get; set; }
     
     public ExerciseSet WorkoutExercise { get; set; }
+    
 }

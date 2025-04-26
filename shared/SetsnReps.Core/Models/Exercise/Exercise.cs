@@ -24,5 +24,9 @@ public class Exercise
     
     public EquipmentType EquipmentType { get; set; }
     
+    public Guid EquipmentTypeId { get; set; }
+    
     public MuscleGroup PrimaryMuscleGroup { get; set; }
+    
+    public Guid PrimaryMuscleGroupId { get; set; }
 }

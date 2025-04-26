@@ -21,7 +21,7 @@ public class WorkoutExercise
     /// <summary>
     /// The minimum interval of time to wait between Exercise sets
     /// </summary>
-    public TimeSpan? RestTime { get; set; }
+    public int? RestTime { get; set; }
     
     public IEnumerable<ExerciseSet> ExerciseSets { get; set; } = new List<ExerciseSet>();
     

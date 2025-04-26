@@ -39,6 +39,8 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 │   └── SetsnReps.Web/
 ├── shared/
 │   └── SetsnReps.Core/
+├── zDocker/
+│   └── Sql/
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -48,7 +50,39 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 
 ## 🧪 Running Locally
 
+### PgSql no docker (development and tests)
+1. Create a `.env` file in the docker directory with the following content:
+   ```plaintext
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=<YourPassword>
+   POSTGRES_DB=SetsAndReps
+   ```
+   
+2. Start PostgreSQL, with the `.env` file created.
+   ```bash
+   docker compose -p <project_name> --env-file setsnreps.env up
+   ```
+
 ### Backend (API)
+
+1. Create a user secrets file (secrets.json) on SetsNReps.API project, with information regarding the database connection string, using the same info written on `setsnreps.env` file.
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Host=localhost;Port=5432;Database=SetsAndReps;Username=postgres;Password=<YourPassword>"
+     }
+   }
+   ```
+
+2. Run the migrations to create the database schema.
+   ```bash
+    cd backend/SetsnReps.Api
+    dotnet ef database update
+    ```
+
+3. On a database tool (like Azure Data Studio), run the `schema_and_import.sql` file to create the tables and import the initial data. The script can be found at `/tmp/setsnreps.sql` in the docker container.  
+ 
+4. Run the API:
 
 ```bash
 cd backend/SetsnReps.Api
