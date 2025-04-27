@@ -24,12 +24,11 @@ namespace SetsnReps.Api.Infrastructure.Migrations
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.EquipmentType", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("MainMuscleAffectedId")
-                        .HasColumnType("uuid");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -38,26 +37,26 @@ namespace SetsnReps.Api.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MainMuscleAffectedId");
-
                     b.ToTable("EquipmentTypes", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.Exercise", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("EquipmentTypeId")
-                        .HasColumnType("uuid");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EquipmentTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("PrimaryMuscleGroupId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("PrimaryMuscleGroupId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ThumbnailUri")
                         .HasMaxLength(200)
@@ -74,9 +73,11 @@ namespace SetsnReps.Api.Infrastructure.Migrations
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.MuscleGroup", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -116,6 +117,7 @@ namespace SetsnReps.Api.Infrastructure.Migrations
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.ExerciseSet", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<int?>("Duration")
@@ -143,6 +145,7 @@ namespace SetsnReps.Api.Infrastructure.Migrations
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.WorkoutExercise", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Notes")
@@ -152,8 +155,8 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                     b.Property<int?>("RestTime")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("SelectedExerciseId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("SelectedExerciseId")
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("WorkoutRoutineId")
                         .HasColumnType("uuid");
@@ -170,6 +173,7 @@ namespace SetsnReps.Api.Infrastructure.Migrations
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.WorkoutRoutine", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
@@ -199,17 +203,6 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WorkoutRoutineSets", (string)null);
-                });
-
-            modelBuilder.Entity("SetsnReps.Core.Models.Exercise.EquipmentType", b =>
-                {
-                    b.HasOne("SetsnReps.Core.Models.Exercise.MuscleGroup", "MainMuscleAffected")
-                        .WithMany()
-                        .HasForeignKey("MainMuscleAffectedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MainMuscleAffected");
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.Exercise", b =>

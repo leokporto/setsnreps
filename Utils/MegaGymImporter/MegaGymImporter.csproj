@@ -25,4 +25,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\SetsnReps.Core\SetsnReps.Core.csproj" />
+  </ItemGroup>
+
 </Project>

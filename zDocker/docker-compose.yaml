@@ -10,8 +10,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./Sql/megaGymDataset.csv:/tmp/megaGymDataset.csv:ro
-      - ./Sql/schema_and_import.sql:/docker-entrypoint-initdb.d/schema_and_import.sql:ro
     restart: unless-stopped
 
 volumes:

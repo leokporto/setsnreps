@@ -11,13 +11,11 @@ public class EquipmentTypeMapping : IEntityTypeConfiguration<EquipmentType>
         builder.ToTable("EquipmentTypes");
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
         
         builder.Property(x => x.Name)
             .HasMaxLength(100)
             .IsRequired(true);
-        
-        builder.HasOne(x => x.MainMuscleAffected)
-            .WithMany()
-            .HasForeignKey(x => x.MainMuscleAffectedId);
     }
 }

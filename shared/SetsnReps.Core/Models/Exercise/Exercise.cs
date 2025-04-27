@@ -10,7 +10,7 @@ public class Exercise
     /// <summary>
     /// Exercise identifier.
     /// </summary>
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     
     /// <summary>
     /// The name of the exercise.
@@ -21,12 +21,12 @@ public class Exercise
     /// The thumbnail image URI for the exercise.
     /// </summary>
     public string ThumbnailUri { get; set; } = string.Empty;
+
+    public EquipmentType EquipmentType { get; set; } = null!;
     
-    public EquipmentType EquipmentType { get; set; }
+    public int EquipmentTypeId { get; set; }
+
+    public MuscleGroup PrimaryMuscleGroup { get; set; } = null!;
     
-    public Guid EquipmentTypeId { get; set; }
-    
-    public MuscleGroup PrimaryMuscleGroup { get; set; }
-    
-    public Guid PrimaryMuscleGroupId { get; set; }
+    public int PrimaryMuscleGroupId { get; set; }
 }

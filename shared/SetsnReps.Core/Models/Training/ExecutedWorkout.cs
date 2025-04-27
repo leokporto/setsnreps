@@ -3,8 +3,8 @@ namespace SetsnReps.Core.Models.Training;
 public class ExecutedWorkout
 {
     public Guid Id { get; set; }
-    
-    public Workout.WorkoutRoutine WorkoutRoutine { get; set; }
+
+    public Workout.WorkoutRoutine WorkoutRoutine { get; set; } = new();
     
     public Guid WorkoutRoutineId { get; set; }
     

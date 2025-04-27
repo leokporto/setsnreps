@@ -20,8 +20,8 @@ public class WorkoutRoutine
     /// A list of exercises that are part of the workout routine.
     /// </summary>
     public IEnumerable<WorkoutExercise> Exercises { get; set; } = new List<WorkoutExercise>();
-    
-    public WorkoutRoutineSet WorkoutRoutineSet { get; set; }
+
+    public WorkoutRoutineSet WorkoutRoutineSet { get; set; } = null!;
     
     public Guid WorkoutRoutineSetId { get; set; }
     

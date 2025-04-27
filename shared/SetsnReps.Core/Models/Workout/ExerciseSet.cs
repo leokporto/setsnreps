@@ -32,7 +32,10 @@ public class ExerciseSet
     /// Fk to the exercise set.
     /// </summary>
     public Guid WorkoutExerciseId { get; set; }
-    
-    public ExerciseSet WorkoutExercise { get; set; }
-    
+
+    /// <summary>
+    /// The parent workout exercise.
+    /// </summary>
+    public ExerciseSet WorkoutExercise { get; set; } = null!;
+
 }

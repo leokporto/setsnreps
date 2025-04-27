@@ -11,6 +11,8 @@ public class MuscleGroupMapping : IEntityTypeConfiguration<MuscleGroup>
         builder.ToTable("MuscleGroups");
         
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
 
         builder.Property(x => x.Name)
             .HasMaxLength(100)

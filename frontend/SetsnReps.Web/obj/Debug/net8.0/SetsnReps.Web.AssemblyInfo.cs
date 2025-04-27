@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SetsnReps.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8063634c7393e89704b524dcd6081c3e686e5b4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4925a815256c3bf851e6b427b72a94a4282ca88e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SetsnReps.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SetsnReps.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
