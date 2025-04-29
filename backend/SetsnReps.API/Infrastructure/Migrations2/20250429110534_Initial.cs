@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SetsnReps.API.Infrastructure.Mappings3
+namespace SetsnReps.Api.Infrastructure.Migrations2
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,7 +56,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ThumbnailUri = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ThumbnailUri = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     EquipmentTypeId = table.Column<int>(type: "int", nullable: false),
                     PrimaryMuscleGroupId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -67,14 +67,12 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                         name: "FK_Exercises_EquipmentTypes_EquipmentTypeId",
                         column: x => x.EquipmentTypeId,
                         principalTable: "EquipmentTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Exercises_MuscleGroups_PrimaryMuscleGroupId",
                         column: x => x.PrimaryMuscleGroupId,
                         principalTable: "MuscleGroups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -123,7 +121,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ExerciseId = table.Column<int>(type: "int", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Notes = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     RestTime = table.Column<int>(type: "int", nullable: true),
                     WorkoutRoutineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

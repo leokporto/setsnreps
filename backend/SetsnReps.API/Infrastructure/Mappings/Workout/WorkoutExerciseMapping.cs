@@ -11,6 +11,8 @@ public class WorkoutExerciseMapping : IEntityTypeConfiguration<WorkoutExercise>
         builder.ToTable("WorkoutExercises");
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd();
         
         builder.Property(x => x.Notes)
             .HasMaxLength(500)
@@ -18,11 +20,18 @@ public class WorkoutExerciseMapping : IEntityTypeConfiguration<WorkoutExercise>
         
         builder.Property(x => x.RestTime)
             .IsRequired(false);
+        
+        builder.Property(we => we.ExerciseId)
+            .IsRequired();
+        
+        builder.Property(we => we.WorkoutRoutineId)
+            .IsRequired();
+        builder.HasIndex(we => we.WorkoutRoutineId);
 
-        builder.Property(x => x.ExerciseId);
+        builder.HasOne(we => we.WorkoutRoutine)
+            .WithMany(wr => wr.Exercises)
+            .HasForeignKey(we => we.WorkoutRoutineId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(x => x.ExerciseSets)
-            .WithOne()
-            .HasForeignKey(x=>x.Id);
     }
 }

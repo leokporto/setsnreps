@@ -20,13 +20,25 @@ public class ExerciseMapping : IEntityTypeConfiguration<Exercise>
         builder.Property(x => x.ThumbnailUri)
             .HasMaxLength(200)
             .IsRequired(false);
+
+        builder.Property(e => e.EquipmentTypeId)
+            .IsRequired();
+        builder.HasIndex(e => e.EquipmentTypeId);
+
+        builder.Property(m => m.PrimaryMuscleGroupId)
+            .IsRequired();
+        builder.HasIndex(m => m.PrimaryMuscleGroupId);
+        
+        builder.HasOne(x => x.EquipmentType)
+            .WithMany()
+            .HasForeignKey(x => x.EquipmentTypeId)
+            .OnDelete(DeleteBehavior.NoAction);
         
         builder.HasOne(x => x.PrimaryMuscleGroup)
             .WithMany()
-            .HasForeignKey(x => x.PrimaryMuscleGroupId);
+            .HasForeignKey(x => x.PrimaryMuscleGroupId)
+            .OnDelete(DeleteBehavior.NoAction);
 
-        builder.HasOne(x => x.EquipmentType)
-            .WithMany()
-            .HasForeignKey(x => x.EquipmentTypeId);
+        
     }
 }

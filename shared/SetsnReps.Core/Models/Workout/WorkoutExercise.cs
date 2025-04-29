@@ -24,9 +24,9 @@ public class WorkoutExercise
     /// </summary>
     public int? RestTime { get; set; }
     
-    public IEnumerable<ExerciseSet> ExerciseSets { get; set; } = new List<ExerciseSet>();
-
+    public Guid WorkoutRoutineId { get; set; }
     public WorkoutRoutine WorkoutRoutine { get; set; } = null!;
     
-    public Guid WorkoutRoutineId { get; set; }
+    public ICollection<ExerciseSet> ExerciseSets { get; set; } = new List<ExerciseSet>();
+
 }

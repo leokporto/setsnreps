@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SetsnReps.API.Infrastructure;
 
 #nullable disable
 
-namespace SetsnReps.API.Infrastructure.Mappings3
+namespace SetsnReps.Api.Infrastructure.Migrations2
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250429023714_InitialCreate")]
-    partial class InitialCreate
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,11 +32,12 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("EquipmentTypes");
+                    b.ToTable("EquipmentTypes", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.Exercise", b =>
@@ -61,8 +59,8 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                         .HasColumnType("int");
 
                     b.Property<string>("ThumbnailUri")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
@@ -70,7 +68,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.HasIndex("PrimaryMuscleGroupId");
 
-                    b.ToTable("Exercises");
+                    b.ToTable("Exercises", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.MuscleGroup", b =>
@@ -83,11 +81,12 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MuscleGroups");
+                    b.ToTable("MuscleGroups", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Training.ExecutedWorkout", b =>
@@ -140,7 +139,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.HasIndex("WorkoutExerciseId");
 
-                    b.ToTable("ExerciseSets");
+                    b.ToTable("ExerciseSets", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.WorkoutExercise", b =>
@@ -153,7 +152,8 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int?>("RestTime")
                         .HasColumnType("int");
@@ -165,7 +165,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.HasIndex("WorkoutRoutineId");
 
-                    b.ToTable("WorkoutExercises");
+                    b.ToTable("WorkoutExercises", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.WorkoutRoutine", b =>
@@ -185,7 +185,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.HasIndex("WorkoutRoutineSetId");
 
-                    b.ToTable("WorkoutRoutines");
+                    b.ToTable("WorkoutRoutines", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Workout.WorkoutRoutineSet", b =>
@@ -200,7 +200,7 @@ namespace SetsnReps.API.Infrastructure.Mappings3
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkoutRoutineSets");
+                    b.ToTable("WorkoutRoutineSets", (string)null);
                 });
 
             modelBuilder.Entity("SetsnReps.Core.Models.Exercise.Exercise", b =>
@@ -208,13 +208,13 @@ namespace SetsnReps.API.Infrastructure.Mappings3
                     b.HasOne("SetsnReps.Core.Models.Exercise.EquipmentType", "EquipmentType")
                         .WithMany()
                         .HasForeignKey("EquipmentTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SetsnReps.Core.Models.Exercise.MuscleGroup", "PrimaryMuscleGroup")
                         .WithMany()
                         .HasForeignKey("PrimaryMuscleGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("EquipmentType");

@@ -19,6 +19,6 @@ public class WorkoutRoutineSet
     /// <summary>
     /// A list of workout routines that are part of the workout routine set.
     /// </summary>
-    public IEnumerable<WorkoutRoutine> WorkoutRoutines { get; set; } = new List<WorkoutRoutine>();
+    public ICollection<WorkoutRoutine> WorkoutRoutines { get; set; } = new List<WorkoutRoutine>();
     
 }

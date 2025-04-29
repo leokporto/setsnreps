@@ -22,11 +22,10 @@ public class Exercise
     /// </summary>
     public string ThumbnailUri { get; set; } = string.Empty;
 
-    public EquipmentType EquipmentType { get; set; } = null!;
-    
     public int EquipmentTypeId { get; set; }
-
+    public int PrimaryMuscleGroupId { get; set; }
+    public EquipmentType EquipmentType { get; set; } = null!;
     public MuscleGroup PrimaryMuscleGroup { get; set; } = null!;
     
-    public int PrimaryMuscleGroupId { get; set; }
+    
 }

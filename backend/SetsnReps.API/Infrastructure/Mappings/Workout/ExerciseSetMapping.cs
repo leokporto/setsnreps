@@ -26,7 +26,14 @@ public class ExerciseSetMapping : IEntityTypeConfiguration<ExerciseSet>
         builder.Property(x => x.Duration)
             .IsRequired(false);
 
-        
+        builder.Property(es => es.WorkoutExerciseId)
+            .IsRequired();
+        builder.HasIndex(es => es.WorkoutExerciseId);
+
+        builder.HasOne(es => es.WorkoutExercise)
+            .WithMany(we => we.ExerciseSets)
+            .HasForeignKey(es => es.WorkoutExerciseId)
+            .OnDelete(DeleteBehavior.Cascade);
 
     }
 }

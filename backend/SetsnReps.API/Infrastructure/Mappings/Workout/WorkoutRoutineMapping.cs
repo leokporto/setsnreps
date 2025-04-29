@@ -17,6 +17,11 @@ public class WorkoutRoutineMapping : IEntityTypeConfiguration<WorkoutRoutine>
         builder.Property(x => x.Name)
             .IsRequired(true);
 
+        builder.Property(wr => wr.WorkoutRoutineSetId)
+            .IsRequired();
+        builder.HasIndex(wr => wr.WorkoutRoutineSetId);
+
+        
         builder.HasMany(x => x.Exercises)
             .WithOne()
             .HasForeignKey(x => x.Id);
@@ -24,7 +29,8 @@ public class WorkoutRoutineMapping : IEntityTypeConfiguration<WorkoutRoutine>
         // Configurando o relacionamento com WorkoutRoutineSet
         builder.HasOne(wr => wr.WorkoutRoutineSet)
             .WithMany(wrs => wrs.WorkoutRoutines)
-            .HasForeignKey(wr => wr.WorkoutRoutineSetId);
+            .HasForeignKey(wr => wr.WorkoutRoutineSetId)
+            .OnDelete(DeleteBehavior.Cascade);
 
     }
 }

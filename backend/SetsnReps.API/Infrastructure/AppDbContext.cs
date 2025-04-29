@@ -1,5 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using SetsnReps.API.Infrastructure.Mappings;
+using SetsnReps.API.Infrastructure.Mappings.Workout;
 using SetsnReps.Core.Models.Exercise;
 using SetsnReps.Core.Models.Training;
 using SetsnReps.Core.Models.Workout;
@@ -29,9 +31,16 @@ public class AppDbContext : DbContext
     public DbSet<ExecutedWorkout> ExecutedWorkouts { get; set; } = null!;
 
 
-    /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         
        // modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }*/
+       modelBuilder.ApplyConfiguration(new EquipmentTypeMapping());
+       modelBuilder.ApplyConfiguration(new MuscleGroupMapping());
+       modelBuilder.ApplyConfiguration(new ExerciseMapping());
+       modelBuilder.ApplyConfiguration(new WorkoutRoutineSetMapping());
+       modelBuilder.ApplyConfiguration(new WorkoutRoutineMapping());
+       modelBuilder.ApplyConfiguration(new WorkoutExerciseMapping());
+       modelBuilder.ApplyConfiguration(new ExerciseSetMapping());
+    }
 }

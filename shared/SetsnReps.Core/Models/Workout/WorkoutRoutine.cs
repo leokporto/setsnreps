@@ -15,14 +15,15 @@ public class WorkoutRoutine
     /// The name of the workout routine.
     /// </summary>
     public string Name { get; set; } = string.Empty;
+
+    public Guid WorkoutRoutineSetId { get; set; }
+    
+    public WorkoutRoutineSet WorkoutRoutineSet { get; set; } = null!;
     
     /// <summary>
     /// A list of exercises that are part of the workout routine.
     /// </summary>
-    public IEnumerable<WorkoutExercise> Exercises { get; set; } = new List<WorkoutExercise>();
+    public ICollection<WorkoutExercise> Exercises { get; set; } = new List<WorkoutExercise>();
 
-    public WorkoutRoutineSet WorkoutRoutineSet { get; set; } = null!;
-    
-    public Guid WorkoutRoutineSetId { get; set; }
     
 }
