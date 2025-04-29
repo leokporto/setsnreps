@@ -17,9 +17,7 @@ public class WorkoutRoutineSetMapping : IEntityTypeConfiguration<WorkoutRoutineS
         builder.Property(x => x.Name)
             .IsRequired(true);
 
-        builder.HasMany(x => x.WorkoutRoutines)
-            .WithOne()
-            .HasForeignKey(x => x.Id);
+        
 
     }
 }

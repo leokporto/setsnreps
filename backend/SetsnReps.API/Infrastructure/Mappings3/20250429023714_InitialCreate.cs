@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace SetsnReps.Api.Infrastructure.Migrations
+namespace SetsnReps.API.Infrastructure.Mappings3
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +15,9 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "EquipmentTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,9 +28,9 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "MuscleGroups",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,8 +41,8 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "WorkoutRoutineSets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,12 +53,12 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "Exercises",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    ThumbnailUri = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
-                    EquipmentTypeId = table.Column<int>(type: "integer", nullable: false),
-                    PrimaryMuscleGroupId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ThumbnailUri = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EquipmentTypeId = table.Column<int>(type: "int", nullable: false),
+                    PrimaryMuscleGroupId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,19 +81,13 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "WorkoutRoutines",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    WorkoutRoutineSetId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WorkoutRoutineSetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WorkoutRoutines", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WorkoutRoutines_WorkoutRoutineSets_Id",
-                        column: x => x.Id,
-                        principalTable: "WorkoutRoutineSets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_WorkoutRoutines_WorkoutRoutineSets_WorkoutRoutineSetId",
                         column: x => x.WorkoutRoutineSetId,
@@ -107,11 +100,11 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "ExecutedWorkouts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    WorkoutRoutineId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Date = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    Duration = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    WeightVolume = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkoutRoutineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    Duration = table.Column<TimeSpan>(type: "time", nullable: false),
+                    WeightVolume = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -128,27 +121,15 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "WorkoutExercises",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    SelectedExerciseId = table.Column<int>(type: "integer", nullable: false),
-                    Notes = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
-                    RestTime = table.Column<int>(type: "integer", nullable: true),
-                    WorkoutRoutineId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExerciseId = table.Column<int>(type: "int", nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RestTime = table.Column<int>(type: "int", nullable: true),
+                    WorkoutRoutineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WorkoutExercises", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WorkoutExercises_Exercises_SelectedExerciseId",
-                        column: x => x.SelectedExerciseId,
-                        principalTable: "Exercises",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_WorkoutExercises_WorkoutRoutines_Id",
-                        column: x => x.Id,
-                        principalTable: "WorkoutRoutines",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_WorkoutExercises_WorkoutRoutines_WorkoutRoutineId",
                         column: x => x.WorkoutRoutineId,
@@ -161,25 +142,19 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "ExerciseSets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrderNumber = table.Column<int>(type: "integer", nullable: false),
-                    Duration = table.Column<int>(type: "integer", nullable: true),
-                    Reps = table.Column<int>(type: "integer", nullable: true),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OrderNumber = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: true),
+                    Reps = table.Column<int>(type: "int", nullable: true),
                     Weight = table.Column<float>(type: "real", nullable: true),
-                    WorkoutExerciseId = table.Column<Guid>(type: "uuid", nullable: false)
+                    WorkoutExerciseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExerciseSets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExerciseSets_ExerciseSets_WorkoutExerciseId",
+                        name: "FK_ExerciseSets_WorkoutExercises_WorkoutExerciseId",
                         column: x => x.WorkoutExerciseId,
-                        principalTable: "ExerciseSets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ExerciseSets_WorkoutExercises_Id",
-                        column: x => x.Id,
                         principalTable: "WorkoutExercises",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -206,11 +181,6 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 column: "WorkoutExerciseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkoutExercises_SelectedExerciseId",
-                table: "WorkoutExercises",
-                column: "SelectedExerciseId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_WorkoutExercises_WorkoutRoutineId",
                 table: "WorkoutExercises",
                 column: "WorkoutRoutineId");
@@ -228,22 +198,22 @@ namespace SetsnReps.Api.Infrastructure.Migrations
                 name: "ExecutedWorkouts");
 
             migrationBuilder.DropTable(
-                name: "ExerciseSets");
-
-            migrationBuilder.DropTable(
-                name: "WorkoutExercises");
-
-            migrationBuilder.DropTable(
                 name: "Exercises");
 
             migrationBuilder.DropTable(
-                name: "WorkoutRoutines");
+                name: "ExerciseSets");
 
             migrationBuilder.DropTable(
                 name: "EquipmentTypes");
 
             migrationBuilder.DropTable(
                 name: "MuscleGroups");
+
+            migrationBuilder.DropTable(
+                name: "WorkoutExercises");
+
+            migrationBuilder.DropTable(
+                name: "WorkoutRoutines");
 
             migrationBuilder.DropTable(
                 name: "WorkoutRoutineSets");

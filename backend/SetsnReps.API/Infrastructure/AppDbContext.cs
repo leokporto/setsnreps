@@ -29,8 +29,9 @@ public class AppDbContext : DbContext
     public DbSet<ExecutedWorkout> ExecutedWorkouts { get; set; } = null!;
 
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    /*protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
+        
+       // modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }*/
 }

@@ -36,6 +36,6 @@ public class ExerciseSet
     /// <summary>
     /// The parent workout exercise.
     /// </summary>
-    public ExerciseSet WorkoutExercise { get; set; } = null!;
+    public WorkoutExercise WorkoutExercise { get; set; } = null!;
 
 }

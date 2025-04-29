@@ -20,5 +20,11 @@ public class WorkoutRoutineMapping : IEntityTypeConfiguration<WorkoutRoutine>
         builder.HasMany(x => x.Exercises)
             .WithOne()
             .HasForeignKey(x => x.Id);
+        
+        // Configurando o relacionamento com WorkoutRoutineSet
+        builder.HasOne(wr => wr.WorkoutRoutineSet)
+            .WithMany(wrs => wrs.WorkoutRoutines)
+            .HasForeignKey(wr => wr.WorkoutRoutineSetId);
+
     }
 }

@@ -25,5 +25,8 @@ public class ExerciseSetMapping : IEntityTypeConfiguration<ExerciseSet>
 
         builder.Property(x => x.Duration)
             .IsRequired(false);
+
+        
+
     }
 }
