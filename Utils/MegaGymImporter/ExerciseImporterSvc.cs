@@ -88,7 +88,7 @@ public class ExerciseImporterSvc
             var exercise = new Exercise
             {
                 Name = record.Title,
-                PrimaryMuscleGroupId = muscleGroupMap[record.BodyPart],
+                MuscleGroupId = muscleGroupMap[record.BodyPart],
                 EquipmentTypeId = equipmentMap[record.Equipment]
             };
             exercises.Add(exercise);

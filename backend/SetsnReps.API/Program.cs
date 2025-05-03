@@ -1,6 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
+using SetsnReps.API.Endpoints.Exercise;
+using SetsnReps.API.Endpoints.Workout;
 using SetsnReps.API.Infrastructure;
+using SetsnReps.API.Middlewares;
+using SetsnReps.API.Services.Exercise;
+using SetsnReps.API.Services.Workout;
 
 namespace SetsnReps.API;
 
@@ -19,8 +24,15 @@ public class Program
 
         builder.Services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        builder.Services.AddScoped<ExerciseService>();
+        builder.Services.AddScoped<WorkoutRoutineSetService>();
+
+        builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
         
         var app = builder.Build();
+        
+        app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
@@ -33,25 +45,9 @@ public class Program
 
         app.UseAuthorization();
 
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-        {
-            var forecast =  Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                {
-                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    TemperatureC = Random.Shared.Next(-20, 55),
-                    Summary = summaries[Random.Shared.Next(summaries.Length)]
-                })
-                .ToArray();
-            return forecast;
-        })
-        .WithName("GetWeatherForecast")
-        .WithOpenApi();
+        app.UseExerciseEndpoints();
+        app.UseWorkoutRoutineSetEndpoints();
+        
 
         app.Run();
     }

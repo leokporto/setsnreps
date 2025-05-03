@@ -19,11 +19,4 @@
     <None Remove="Enums\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Account\" />
-    <Folder Include="Models\Exercise\" />
-    <Folder Include="Models\Training\" />
-    <Folder Include="Models\Workout\" />
-  </ItemGroup>
-
 </Project>

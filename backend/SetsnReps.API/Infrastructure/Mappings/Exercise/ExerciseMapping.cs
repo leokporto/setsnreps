@@ -25,18 +25,18 @@ public class ExerciseMapping : IEntityTypeConfiguration<Exercise>
             .IsRequired();
         builder.HasIndex(e => e.EquipmentTypeId);
 
-        builder.Property(m => m.PrimaryMuscleGroupId)
+        builder.Property(m => m.MuscleGroupId)
             .IsRequired();
-        builder.HasIndex(m => m.PrimaryMuscleGroupId);
+        builder.HasIndex(m => m.MuscleGroupId);
         
         builder.HasOne(x => x.EquipmentType)
             .WithMany()
             .HasForeignKey(x => x.EquipmentTypeId)
             .OnDelete(DeleteBehavior.NoAction);
         
-        builder.HasOne(x => x.PrimaryMuscleGroup)
+        builder.HasOne(x => x.MuscleGroup)
             .WithMany()
-            .HasForeignKey(x => x.PrimaryMuscleGroupId)
+            .HasForeignKey(x => x.MuscleGroupId)
             .OnDelete(DeleteBehavior.NoAction);
 
         

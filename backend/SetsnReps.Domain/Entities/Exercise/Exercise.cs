@@ -23,9 +23,9 @@ public class Exercise
     public string ThumbnailUri { get; set; } = string.Empty;
 
     public int EquipmentTypeId { get; set; }
-    public int PrimaryMuscleGroupId { get; set; }
+    public int MuscleGroupId { get; set; }
     public EquipmentType EquipmentType { get; set; } = null!;
-    public MuscleGroup PrimaryMuscleGroup { get; set; } = null!;
+    public MuscleGroup MuscleGroup { get; set; } = null!;
     
     
 }
