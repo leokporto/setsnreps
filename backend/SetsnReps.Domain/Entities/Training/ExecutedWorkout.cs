@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Training;
+namespace SetsnReps.Domain.Entities.Training;
 
 public class ExecutedWorkout
 {

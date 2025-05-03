@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Workout;
+namespace SetsnReps.Domain.Entities.Workout;
 
 /// <summary>
 /// The representation of a single execution on a set. <br/>

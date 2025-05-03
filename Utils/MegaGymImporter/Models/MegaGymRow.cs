@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using SetsnReps.Core.Models.Exercise;
+using SetsnReps.Domain.Entities.Exercise;
 
 namespace MegaGymImporter.Models;
 

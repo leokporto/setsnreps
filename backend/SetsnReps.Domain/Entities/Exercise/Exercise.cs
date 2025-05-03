@@ -1,6 +1,6 @@
-using SetsnReps.Core.Enums;
 
-namespace SetsnReps.Core.Models.Exercise;
+
+namespace SetsnReps.Domain.Entities.Exercise;
 
 /// <summary>
 /// Representation of an exercise.

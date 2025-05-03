@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Workout;
+namespace SetsnReps.Domain.Entities.Workout;
 
 /// <summary>
 /// A set (or collection) of workout routines. <br/>

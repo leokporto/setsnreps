@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SetsnReps.Core.Models.Workout;
+using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Infrastructure.Mappings.Workout;
 

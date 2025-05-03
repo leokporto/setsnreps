@@ -1,10 +1,9 @@
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using SetsnReps.API.Infrastructure.Mappings;
 using SetsnReps.API.Infrastructure.Mappings.Workout;
-using SetsnReps.Core.Models.Exercise;
-using SetsnReps.Core.Models.Training;
-using SetsnReps.Core.Models.Workout;
+using SetsnReps.Domain.Entities.Exercise;
+using SetsnReps.Domain.Entities.Training;
+using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Infrastructure;
 

@@ -4,7 +4,7 @@ using CsvHelper;
 using Dapper;
 using MegaGymImporter.Models;
 using Microsoft.Extensions.Configuration;
-using SetsnReps.Core.Models.Exercise;
+using SetsnReps.Domain.Entities.Exercise;
 
 namespace MegaGymImporter;
 

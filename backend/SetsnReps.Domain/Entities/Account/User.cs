@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Account;
+namespace SetsnReps.Domain.Entities.Account;
 
 public class User
 {

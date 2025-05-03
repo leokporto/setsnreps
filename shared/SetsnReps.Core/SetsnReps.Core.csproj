@@ -7,4 +7,23 @@
     <UserSecretsId>2a983627-c3a7-48f5-b42a-6cd044cc6c37</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Account\" />
+    <Folder Include="Models\Exercise\" />
+    <Folder Include="Models\Training\" />
+    <Folder Include="Models\Workout\" />
+  </ItemGroup>
+
 </Project>

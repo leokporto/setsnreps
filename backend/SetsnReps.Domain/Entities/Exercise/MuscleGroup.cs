@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Exercise;
+namespace SetsnReps.Domain.Entities.Exercise;
 
 /// <summary>
 /// The muscle group that is targeted by an exercise.

@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Workout;
+namespace SetsnReps.Domain.Entities.Workout;
 
 /// <summary>
 /// A list of exercise sets that are performed together.

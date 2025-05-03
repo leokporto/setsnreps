@@ -1,4 +1,4 @@
-namespace SetsnReps.Core.Models.Exercise;
+namespace SetsnReps.Domain.Entities.Exercise;
 
 public class EquipmentType
 {
