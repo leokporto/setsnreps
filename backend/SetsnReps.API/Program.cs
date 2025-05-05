@@ -27,6 +27,7 @@ public class Program
 
         builder.Services.AddScoped<ExerciseService>();
         builder.Services.AddScoped<WorkoutRoutineSetService>();
+        builder.Services.AddScoped<WorkoutRoutineService>();
 
         builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
         
