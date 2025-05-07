@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SetsnReps.API.Infrastructure;
 using SetsnReps.API.Mappings.Workout;
 using SetsnReps.Core.DTOs.Workout;
+using SetsnReps.Core.DTOs.Workout.Base;
 using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Services.Workout;
@@ -15,15 +16,21 @@ public class WorkoutRoutineService
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<WorkoutRoutineResponse>> GetAllWorkoutRoutinesAsync()
+    public async Task<IEnumerable<SimpleDtoResponse>> GetAllWorkoutRoutinesAsync()
     {
-        var response = await _dbContext.WorkoutRoutines
+        var allroutines = await _dbContext.WorkoutRoutines
             .Include(e => e.Exercises)
             .ThenInclude(es => es.ExerciseSets)
             .Select(wr => wr.ToWorkoutRoutineResponse())
             .AsNoTracking()
             .ToListAsync();
 
+        var response = allroutines.Select(wr => new SimpleDtoResponse()
+        {
+            Id = wr.Id,
+            Name = wr.Name
+        });
+        
         return response;
     }
     

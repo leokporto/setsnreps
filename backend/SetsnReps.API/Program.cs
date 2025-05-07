@@ -48,7 +48,7 @@ public class Program
 
         app.UseExerciseEndpoints();
         app.UseWorkoutRoutineSetEndpoints();
-        
+        app.UseWorkoutRoutineEndpoints();
 
         app.Run();
     }

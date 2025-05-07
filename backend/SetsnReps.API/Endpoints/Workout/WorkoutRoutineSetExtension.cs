@@ -14,7 +14,7 @@ public static class WorkoutRoutineSetExtension
             .WithTags("WorkoutRoutineSet")
             .WithOpenApi();
             
-        group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound, StatusCodeHttpResult>>
+        group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
             (WorkoutRoutineSetService svc) =>
             {
                 var workoutRoutineSets = await svc.GetAllAsync();
