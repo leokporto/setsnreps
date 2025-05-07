@@ -33,18 +33,7 @@ public static class WorkoutRoutineExtensions
         var workoutRoutine = new Entity.WorkoutRoutine
         {
             Name = request.Name,
-            Exercises = request.Exercises.Select(x => new Entity.WorkoutExercise
-            {
-                ExerciseId = x.ExerciseId,
-                ExerciseSets = x.ExerciseSets.Select(y => new Entity.ExerciseSet()
-                {
-                    Reps = y.Reps,
-                    Weight = y.Weight,
-                    Duration = y.Duration,
-                    OrderNumber = y.OrderNumber
-                    
-                }).ToList()
-            }).ToList()
+            Exercises = request.Exercises.ToWorkoutExercises()
         };
         
         return workoutRoutine;

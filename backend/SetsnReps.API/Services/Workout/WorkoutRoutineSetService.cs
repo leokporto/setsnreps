@@ -31,7 +31,6 @@ public class WorkoutRoutineSetService
         var response = await _dbContext.WorkoutRoutineSets
             .Include(r => r.WorkoutRoutines)
             .Where(wrs => wrs.Id == id)
-            .AsNoTracking()
             .Select(wrs => wrs.ToWorkoutRoutineSetResponse())
             .FirstOrDefaultAsync();
         
