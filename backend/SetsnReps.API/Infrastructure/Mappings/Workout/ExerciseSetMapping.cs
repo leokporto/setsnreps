@@ -21,6 +21,7 @@ public class ExerciseSetMapping : IEntityTypeConfiguration<ExerciseSet>
             .IsRequired(false);
 
         builder.Property(x => x.Weight)
+            .HasColumnType("numeric(6, 2)")
             .IsRequired(false);
 
         builder.Property(x => x.Duration)

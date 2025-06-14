@@ -26,7 +26,7 @@ public class ExerciseSet
     /// <summary>
     /// The weight used for the set execution item (if not DurationExecution).
     /// </summary>
-    public float? Weight { get; set; }
+    public decimal? Weight { get; set; }
     
     /// <summary>
     /// Fk to the exercise set.

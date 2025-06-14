@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "m4FL/b+cJ1U=",
+  "dgSpecHash": "MJ6iXgN5nyI=",
   "success": true,
   "projectFilePath": "C:\\GithubRepos\\setsnreps\\frontend\\SetsnReps.Web\\SetsnReps.Web.csproj",
   "expectedPackageFiles": [
@@ -28,10 +28,10 @@
     "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.jsinterop\\8.0.15\\microsoft.jsinterop.8.0.15.nupkg.sha512",
     "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.jsinterop.webassembly\\8.0.15\\microsoft.jsinterop.webassembly.8.0.15.nupkg.sha512",
-    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.14\\microsoft.net.illink.tasks.8.0.14.nupkg.sha512",
-    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.3\\microsoft.net.sdk.webassembly.pack.9.0.3.nupkg.sha512",
+    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.16\\microsoft.net.illink.tasks.8.0.16.nupkg.sha512",
+    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.5\\microsoft.net.sdk.webassembly.pack.9.0.5.nupkg.sha512",
     "C:\\Users\\leokporto\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
-    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.15\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.15.nupkg.sha512"
+    "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\8.0.17\\microsoft.netcore.app.runtime.mono.browser-wasm.8.0.17.nupkg.sha512"
   ],
   "logs": []
 }
