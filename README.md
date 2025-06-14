@@ -1,7 +1,6 @@
 # Sets n' Reps 🏋️‍♂️📲
 
-**SetsnReps** is a workout tracking app (inspired by Hevy), built using .NET 8 and Blazor WebAssembly.  
-The entire project is being documented through a YouTube series on [@dotnetOnTap](https://www.youtube.com/@dotnetOnTap), where we combine .NET, coding, beer, fitness, and more.
+**SetsnReps** is a workout tracking app (inspired by Hevy), built using .NET 8 and Blazor WebAssembly.
 
 ---
 
@@ -35,12 +34,12 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 /setsnreps
 ├── backend/
 │   └── SetsnReps.Api/
+│   └── SetsnReps.Domain/
 ├── frontend/
 │   └── SetsnReps.Web/
 ├── shared/
 │   └── SetsnReps.Core/
 ├── zDocker/
-│   └── Sql/
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -53,9 +52,8 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
 ### PgSql no docker (development and tests)
 1. Create a `.env` file in the docker directory with the following content:
    ```plaintext
-   POSTGRES_USER=postgres
    POSTGRES_PASSWORD=<YourPassword>
-   POSTGRES_DB=SetsAndReps
+   POSTGRES_DB=setsnreps
    ```
    
 2. Start PostgreSQL, with the `.env` file created.
@@ -69,7 +67,7 @@ The entire project is being documented through a YouTube series on [@dotnetOnTap
    ```json
    {
      "ConnectionStrings": {
-       "DefaultConnection": "Host=localhost;Port=5432;Database=SetsAndReps;Username=postgres;Password=<YourPassword>"
+       "DefaultConnection": "Host=localhost;Port=5432;Database=setsnreps;Username=postgres;Password=<YourPassword>"
      }
    }
    ```
@@ -99,10 +97,6 @@ dotnet run
 ```
 
 ---
-
-## 🎥 Follow the Series
-📺 YouTube - [@dotnetOnTap](https://www.youtube.com/@dotnetOnTap)
-Weekly updates, deep-dives, and hands-on development
 
 
 *Built with .NET. Fueled by sets, reps, coffe, and sometimes beer.*
