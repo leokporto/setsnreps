@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using SetsnReps.API.Contract.Services.Services.Workout;
 using SetsnReps.API.Endpoints.Exercise;
 using SetsnReps.API.Endpoints.Workout;
 using SetsnReps.API.Infrastructure;
@@ -27,8 +28,8 @@ public class Program
                 .LogTo(Console.WriteLine, LogLevel.Information));
 
         builder.Services.AddScoped<ExerciseService>();
-        builder.Services.AddScoped<WorkoutRoutineSetService>();
-        builder.Services.AddScoped<WorkoutRoutineService>();
+        builder.Services.AddScoped<IWorkoutRoutineSetService, WorkoutRoutineSetService>();
+        builder.Services.AddScoped<IWorkoutRoutineService, WorkoutRoutineService>();
 
         builder.Services.AddTransient<GlobalExceptionHandlingMiddleware>();
         

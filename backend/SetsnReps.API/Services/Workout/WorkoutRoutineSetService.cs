@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SetsnReps.API.Contract.Services.Services.Workout;
 using SetsnReps.API.Infrastructure;
 using SetsnReps.API.Mappings.Workout;
 using SetsnReps.Core.DTOs.Workout;
@@ -7,10 +8,13 @@ using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Services.Workout;
 
-public class WorkoutRoutineSetService
+
+
+public class WorkoutRoutineSetService : IWorkoutRoutineSetService
 {
     private readonly AppDbContext _dbContext;
-
+//TODO: TRy-catches aqui. Fazer uma revisao geral.
+    
     public WorkoutRoutineSetService(AppDbContext dbContext)
     {
         _dbContext = dbContext;

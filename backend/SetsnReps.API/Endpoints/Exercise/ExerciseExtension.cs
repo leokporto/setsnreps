@@ -11,11 +11,11 @@ public static class ExerciseExtension
     {
         var group = app.MapGroup("/exercise").WithOpenApi();
         
-        group.MapGet("/exercise", async Task<Results<Ok<IEnumerable<ExerciseResponse>>, NotFound>>
-            (ExerciseService exerciseSvc) =>
+        group.MapGet("/exercise/page/{page:int}", async Task<Results<Ok<IEnumerable<ExerciseResponse>>, NotFound>>
+            (int page, ExerciseService exerciseSvc) =>
             {
 
-                IEnumerable<ExerciseResponse> exercises = await exerciseSvc.GetAllExercisesAsync();
+                IEnumerable<ExerciseResponse> exercises = await exerciseSvc.GetAllExercisesByPageAsync(page);
                 
                 return exercises is null || !exercises.Any()
                     ? TypedResults.NotFound()

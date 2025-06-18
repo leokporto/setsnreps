@@ -8,7 +8,8 @@ namespace SetsnReps.API.Services.Exercise;
 public class ExerciseService
 {
     private readonly AppDbContext _dbContext;
-
+    private const int PAGE_RECORDS = 20;
+    
     public ExerciseService(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -17,15 +18,23 @@ public class ExerciseService
     /// <summary>
     /// Gets all exercises from the database.
     /// </summary>
-    public async Task<IEnumerable<ExerciseResponse>> GetAllExercisesAsync()
+    public async Task<IEnumerable<ExerciseResponse>> GetAllExercisesByPageAsync(
+        int page, 
+        CancellationToken cancellationToken = default)
     {
+        if (page < 1)
+            return null;
+        
         var exercises = await _dbContext.Exercises
             .Include(x => x.EquipmentType)
             .Include(x => x.MuscleGroup)
             .AsNoTracking()
+            .OrderBy(x => x.Id) // Garante ordenação consistente
+            .Skip((page - 1) * PAGE_RECORDS)
+            .Take(PAGE_RECORDS)
             .Select(x => x.ToExerciseResponse())
-            .ToListAsync();
-
+            .ToListAsync(cancellationToken);
+        
         return exercises;
     }
     
@@ -47,16 +56,32 @@ public class ExerciseService
     /// <summary>
     /// Gets a list of exercises by a filter (like) on their name.
     /// </summary>
-    /// <param name="name"></param>
-    public async Task<IEnumerable<ExerciseResponse>> GetExercisesByNameAsync(string name)
+    /// <param name="name">The name or part of the name to search for</param>
+    /// <param name="page">The page number (starting from 1)</param>
+    /// <param name="cancellationToken">Token to cancel the operation</param>
+    /// <returns>A collection of exercises matching the name criteria</returns>
+    /// <exception cref="ArgumentException">Thrown when name is null or empty, or page is less than 1</exception>
+    public async Task<IEnumerable<ExerciseResponse>> GetExercisesByNameAsync(
+        string name,
+        int page = 1,
+        CancellationToken cancellationToken = default)
     {
+        if (string.IsNullOrWhiteSpace(name))
+            return null;
+        
+        if (page < 1)
+            return null;
+
         var exercises = await _dbContext.Exercises
             .Include(x => x.EquipmentType)
             .Include(x => x.MuscleGroup)
-            .Where(x => x.Name.Contains(name))
+            .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{name.ToLower()}%"))
             .AsNoTracking()
+            .OrderBy(x => x.Id)
+            .Skip((page - 1) * PAGE_RECORDS)
+            .Take(PAGE_RECORDS)
             .Select(x => x.ToExerciseResponse())
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
         return exercises;
     }
