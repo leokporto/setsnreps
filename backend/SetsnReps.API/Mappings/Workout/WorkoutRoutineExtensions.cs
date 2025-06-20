@@ -12,11 +12,13 @@ public static class WorkoutRoutineExtensions
         {
             Id = workoutRoutine.Id,
             Name = workoutRoutine.Name,
-            Exercises = workoutRoutine.Exercises.Select(x => new Dto.WorkoutExercise
+            Exercises = workoutRoutine.Exercises.Select(x => new Dto.UpdateWorkoutExercise
             {
+                Id = x.Id,
                 ExerciseId = x.ExerciseId,
-                ExerciseSets = x.ExerciseSets.Select(y => new Dto.ExerciseSet()
+                ExerciseSets = x.ExerciseSets.Select(y => new Dto.UpdateExerciseSet()
                 {
+                    Id = y.Id,
                     Reps = y.Reps,
                     Weight = y.Weight,
                     Duration = y.Duration,
@@ -28,11 +30,23 @@ public static class WorkoutRoutineExtensions
         return response;
     }
     
-    public static Entity.WorkoutRoutine ToWorkoutRoutine(this Dto.WorkoutRoutineRequest request)
+    public static Entity.WorkoutRoutine ToWorkoutRoutine(this Dto.AddWorkoutRoutineRequest request)
     {
         var workoutRoutine = new Entity.WorkoutRoutine
         {
             Name = request.Name,
+            Exercises = request.Exercises.ToWorkoutExercises()
+        };
+        
+        return workoutRoutine;
+    }
+    
+    public static Entity.WorkoutRoutine ToWorkoutRoutine(this Dto.UpdateWorkoutRoutineRequest request, Guid id)
+    {
+        var workoutRoutine = new Entity.WorkoutRoutine
+        {
+            Name = request.Name,
+            Id = id,
             Exercises = request.Exercises.ToWorkoutExercises()
         };
         

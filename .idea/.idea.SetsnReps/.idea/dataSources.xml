@@ -9,5 +9,13 @@
       <jdbc-url>Server=localhost;Database=SetsAndReps;User Id=sa;Password=P@55w0rd</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="setsnreps@localhost" uuid="33d6ad1e-97ae-4636-bcd2-7f74f6224515">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/setsnreps?password=P%4055w0rd&amp;user=postgres</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

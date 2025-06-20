@@ -13,11 +13,15 @@ namespace SetsnReps.API.Services.Workout;
 public class WorkoutRoutineSetService : IWorkoutRoutineSetService
 {
     private readonly AppDbContext _dbContext;
-//TODO: TRy-catches aqui. Fazer uma revisao geral.
+    private readonly ILogger<WorkoutRoutineSetService> _logger;
+
     
-    public WorkoutRoutineSetService(AppDbContext dbContext)
+    public WorkoutRoutineSetService(AppDbContext dbContext, 
+        ILogger<WorkoutRoutineSetService> logger)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
     }
 
     public async Task<IEnumerable<SimpleDtoResponse>> GetAllAsync()
@@ -32,26 +36,50 @@ public class WorkoutRoutineSetService : IWorkoutRoutineSetService
 
     public async Task<WorkoutRoutineSetResponse?> GetByIdAsync(Guid id)
     {
-        var response = await _dbContext.WorkoutRoutineSets
-            .Include(r => r.WorkoutRoutines)
-            .Where(wrs => wrs.Id == id)
-            .Select(wrs => wrs.ToWorkoutRoutineSetResponse())
-            .FirstOrDefaultAsync();
-        
-        return response;
+        if (id == Guid.Empty)
+            return null;
+
+        try
+        {
+            var response = await _dbContext.WorkoutRoutineSets
+                .AsNoTracking()
+                .Where(wrs => wrs.Id == id)
+                .Select(wrs => wrs.ToWorkoutRoutineSetResponse())
+                .FirstOrDefaultAsync();
+
+            return response;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erro ao buscar workout routine set: {Id}", id);
+            throw;
+        }
+
     }
 
     public async Task<WorkoutRoutineSetResponse> AddAsync(string name)
     {
-        var workoutRoutineSet = new WorkoutRoutineSet
-        {
-            Name = name
-        };
+        if (string.IsNullOrWhiteSpace(name))
+            return null;
 
-        await _dbContext.WorkoutRoutineSets.AddAsync(workoutRoutineSet);
-        await _dbContext.SaveChangesAsync();
-        
-        return workoutRoutineSet.ToWorkoutRoutineSetResponse();
+        try
+        {
+            var workoutRoutineSet = new WorkoutRoutineSet
+            {
+                Name = name.Trim()
+            };
+
+            await _dbContext.WorkoutRoutineSets.AddAsync(workoutRoutineSet);
+            await _dbContext.SaveChangesAsync();
+
+            return workoutRoutineSet.ToWorkoutRoutineSetResponse();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erro ao adicionar workout routine set: {Name}", name);
+            throw;
+        }
+
     }
 
     public async Task<bool> UpdateAsync(WorkoutRoutineSetRequest request)

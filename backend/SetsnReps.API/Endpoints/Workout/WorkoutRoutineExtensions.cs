@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using SetsnReps.API.Contract.Services.Services.Workout;
 using SetsnReps.API.Services.Workout;
 using SetsnReps.Core.DTOs.Workout;
 using SetsnReps.Core.DTOs.Workout.Base;
@@ -14,7 +15,7 @@ public static class WorkoutRoutineExtensions
             .WithOpenApi();
 
         group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
-            (WorkoutRoutineService workoutRoutineService) =>
+            (IWorkoutRoutineService workoutRoutineService) =>
             {
                 var result = await workoutRoutineService.GetAllWorkoutRoutinesAsync();
                 if (result is null)
@@ -25,7 +26,7 @@ public static class WorkoutRoutineExtensions
             .WithName("GetAllWorkoutRoutines");
         
         group.MapGet("/{id:guid}", async Task<Results<Ok<WorkoutRoutineResponse>, NotFound>>
-            (Guid id, WorkoutRoutineService workoutRoutineService) =>
+            (Guid id, IWorkoutRoutineService workoutRoutineService) =>
             {
                 var result = await workoutRoutineService.GetWorkoutRoutineAsync(id);
                 if (result is null)
@@ -36,7 +37,7 @@ public static class WorkoutRoutineExtensions
             .WithName("GetWorkoutRoutineById");
         
         group.MapPost("/", async Task<Results<Created<WorkoutRoutineResponse>, BadRequest>>
-            (WorkoutRoutineRequest workoutRoutineRequest, WorkoutRoutineService workoutRoutineService) =>
+            (AddWorkoutRoutineRequest workoutRoutineRequest, IWorkoutRoutineService workoutRoutineService) =>
             {
                 var result = await workoutRoutineService.AddWorkoutRoutineAsync(workoutRoutineRequest);
                 if (result is null)
@@ -47,7 +48,7 @@ public static class WorkoutRoutineExtensions
             .WithName("AddWorkoutRoutine");
         
         group.MapPut("/{id:guid}", async Task<Results<Ok<bool>, NotFound>>
-            (Guid id, WorkoutRoutineRequest workoutRoutineRequest, WorkoutRoutineService workoutRoutineService) =>
+            (Guid id, UpdateWorkoutRoutineRequest workoutRoutineRequest, IWorkoutRoutineService workoutRoutineService) =>
             {
                 var result = await workoutRoutineService.UpdateWorkoutRoutineAsync(id, workoutRoutineRequest);
                 if (!result)
@@ -58,7 +59,7 @@ public static class WorkoutRoutineExtensions
             .WithName("UpdateWorkoutRoutine");
         
         group.MapDelete("/{id:guid}", async Task<Results<Ok<bool>, NotFound>>
-            (Guid id, WorkoutRoutineService workoutRoutineService) =>
+            (Guid id, IWorkoutRoutineService workoutRoutineService) =>
             {
                 var result = await workoutRoutineService.DeleteAsync(id);
                 if (!result)

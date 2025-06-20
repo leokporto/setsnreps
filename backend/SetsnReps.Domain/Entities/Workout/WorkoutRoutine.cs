@@ -4,6 +4,7 @@ namespace SetsnReps.Domain.Entities.Workout;
 /// Workout routine is a set of exercises that are performed together. <br/>
 /// E.g.: A Train - Chest and Triceps, B Train - Legs, C Train - Back and Biceps...
 /// </summary>
+/// <remarks>Workout routines can be part of a Workout routine set or not.</remarks>
 public class WorkoutRoutine
 {
     /// <summary>
@@ -16,9 +17,9 @@ public class WorkoutRoutine
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
-    public Guid WorkoutRoutineSetId { get; set; }
+    public Guid? WorkoutRoutineSetId { get; set; }
     
-    public WorkoutRoutineSet WorkoutRoutineSet { get; set; } = null!;
+    public WorkoutRoutineSet? WorkoutRoutineSet { get; set; }
     
     /// <summary>
     /// A list of exercises that are part of the workout routine.

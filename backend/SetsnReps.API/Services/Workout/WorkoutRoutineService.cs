@@ -99,7 +99,7 @@ public class WorkoutRoutineService : IWorkoutRoutineService
     /// </summary>
     /// <param name="request">The request</param>
     /// <returns><see cref="WorkoutRoutineResponse"/></returns>
-    public async Task<WorkoutRoutineResponse> AddWorkoutRoutineAsync(WorkoutRoutineRequest request)
+    public async Task<WorkoutRoutineResponse> AddWorkoutRoutineAsync(AddWorkoutRoutineRequest request)
     {
         if (request == null)
             return null;
@@ -131,7 +131,7 @@ public class WorkoutRoutineService : IWorkoutRoutineService
     /// <param name="id"></param>
     /// <param name="request"><see cref="WorkoutRoutineRequest"/></param>
     /// <returns></returns>
-    public async Task<bool> UpdateWorkoutRoutineAsync(Guid id, WorkoutRoutineRequest request)
+    public async Task<bool> UpdateWorkoutRoutineAsync(Guid id, UpdateWorkoutRoutineRequest request)
     {
         if (request == null)
             return false;

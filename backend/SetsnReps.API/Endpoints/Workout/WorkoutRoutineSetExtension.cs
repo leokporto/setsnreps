@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using SetsnReps.API.Contract.Services.Services.Workout;
 using SetsnReps.API.Services.Workout;
 using SetsnReps.Core.DTOs.Workout;
 using SetsnReps.Core.DTOs.Workout.Base;
@@ -15,7 +16,7 @@ public static class WorkoutRoutineSetExtension
             .WithOpenApi();
             
         group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
-            (WorkoutRoutineSetService svc) =>
+            (IWorkoutRoutineSetService svc) =>
             {
                 var workoutRoutineSets = await svc.GetAllAsync();
                 return workoutRoutineSets is not null 
@@ -24,8 +25,8 @@ public static class WorkoutRoutineSetExtension
             })
             .WithName("GetAllWorkoutRoutineSets");
             
-        group.MapGet("/{id}", async Task<Results<Ok<WorkoutRoutineSetResponse>, NotFound>>
-            (WorkoutRoutineSetService svc, Guid id) =>
+        group.MapGet("/{id:guid}", async Task<Results<Ok<WorkoutRoutineSetResponse>, NotFound>>
+            (Guid id, IWorkoutRoutineSetService svc) =>
             {
                 if (id == Guid.Empty)
                     return TypedResults.NotFound();
@@ -38,7 +39,7 @@ public static class WorkoutRoutineSetExtension
             .WithName("GetWorkoutRoutineSetById");
             
         group.MapPost("/", async Task<Results<Created<WorkoutRoutineSetResponse>, BadRequest>>
-            (WorkoutRoutineSetService svc, string name) =>
+            (IWorkoutRoutineSetService svc, string name) =>
             {
                 if (string.IsNullOrWhiteSpace(name))
                     return TypedResults.BadRequest();
@@ -48,13 +49,13 @@ public static class WorkoutRoutineSetExtension
             })
             .WithName("AddWorkoutRoutineSet");
             
-        group.MapPut("/{id}", async Task<Results<NoContent, BadRequest, NotFound>>
-            (WorkoutRoutineSetService svc, WorkoutRoutineSetRequest request) =>
+        group.MapPut("/{id:guid}", async Task<Results<NoContent, BadRequest, NotFound>>
+            (Guid id, IWorkoutRoutineSetService svc, WorkoutRoutineSetRequest request) =>
             {
-                if (request is null || request.Id == Guid.Empty || string.IsNullOrWhiteSpace(request.Name))
+                if (request is null || id == Guid.Empty || string.IsNullOrWhiteSpace(request.Name))
                     return TypedResults.BadRequest();
 
-                var exists = await svc.GetByIdAsync(request.Id);
+                var exists = await svc.GetByIdAsync(id);
                 if (exists is null)
                     return TypedResults.NotFound();
 
@@ -65,8 +66,8 @@ public static class WorkoutRoutineSetExtension
                 return TypedResults.NoContent();
             });
             
-        group.MapDelete("/{id}", async Task<Results<NoContent, NotFound>>
-            (WorkoutRoutineSetService svc, Guid id) =>
+        group.MapDelete("/{id:guid}", async Task<Results<NoContent, NotFound>>
+            (Guid id, IWorkoutRoutineSetService svc) =>
             {
                 var exists = await svc.GetByIdAsync(id);
                 if (exists is null)

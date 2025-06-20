@@ -1,9 +1,7 @@
 namespace SetsnReps.Core.DTOs.Workout;
 
-public class ExerciseSet
+public abstract class ExerciseSet
 {
-    public Guid Id { get; set; }
-    
     /// <summary>
     /// The order of the set execution item.
     /// </summary>
@@ -24,4 +22,17 @@ public class ExerciseSet
     /// </summary>
     public decimal? Weight { get; set; }
 
+}
+
+public class AddExerciseSet : ExerciseSet
+{
+    
+}
+
+public class UpdateExerciseSet : ExerciseSet
+{
+    /// <summary>
+    /// The identifier of the exercise set.
+    /// </summary>
+    public Guid Id { get; set; }
 }

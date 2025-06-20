@@ -19,7 +19,7 @@ public interface IWorkoutRoutineService
     /// </summary>
     /// <param name="request">The request</param>
     /// <returns><see cref="WorkoutRoutineResponse"/></returns>
-    Task<WorkoutRoutineResponse> AddWorkoutRoutineAsync(WorkoutRoutineRequest request);
+    Task<WorkoutRoutineResponse> AddWorkoutRoutineAsync(AddWorkoutRoutineRequest request);
 
     /// <summary>
     /// Update a workout routine
@@ -27,7 +27,7 @@ public interface IWorkoutRoutineService
     /// <param name="id"></param>
     /// <param name="request"><see cref="WorkoutRoutineRequest"/></param>
     /// <returns></returns>
-    Task<bool> UpdateWorkoutRoutineAsync(Guid id, WorkoutRoutineRequest request);
+    Task<bool> UpdateWorkoutRoutineAsync(Guid id, UpdateWorkoutRoutineRequest request);
 
     /// <summary>
     /// Delete a workout routine
