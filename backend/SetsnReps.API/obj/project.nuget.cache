@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKJQSA6PlbM=",
+  "dgSpecHash": "CPv2wWq26xs=",
   "success": true,
-  "projectFilePath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj",
+  "projectFilePath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leokporto\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.15\\microsoft.aspnetcore.openapi.8.0.15.nupkg.sha512",

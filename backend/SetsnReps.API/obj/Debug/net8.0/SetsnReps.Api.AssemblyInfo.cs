@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a19344b0f7dda744ba5c031c9acdd933bf514b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a289fa1a1b63482b48c72fb70fbab966a7967d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SetsnReps.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

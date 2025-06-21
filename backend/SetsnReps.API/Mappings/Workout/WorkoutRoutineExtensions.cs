@@ -12,6 +12,7 @@ public static class WorkoutRoutineExtensions
         {
             Id = workoutRoutine.Id,
             Name = workoutRoutine.Name,
+            WorkoutRoutineSetId = workoutRoutine.WorkoutRoutineSetId,
             Exercises = workoutRoutine.Exercises.Select(x => new Dto.UpdateWorkoutExercise
             {
                 Id = x.Id,
@@ -35,6 +36,7 @@ public static class WorkoutRoutineExtensions
         var workoutRoutine = new Entity.WorkoutRoutine
         {
             Name = request.Name,
+            WorkoutRoutineSetId = request.WorkoutRoutineSetId,
             Exercises = request.Exercises.ToWorkoutExercises()
         };
         
@@ -47,6 +49,7 @@ public static class WorkoutRoutineExtensions
         {
             Name = request.Name,
             Id = id,
+            WorkoutRoutineSetId = request.WorkoutRoutineSetId,
             Exercises = request.Exercises.ToWorkoutExercises()
         };
         

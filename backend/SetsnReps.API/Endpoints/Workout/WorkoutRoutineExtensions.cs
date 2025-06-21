@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using SetsnReps.API.Contract.Services.Services.Workout;
+using SetsnReps.API.Migrations;
 using SetsnReps.API.Services.Workout;
 using SetsnReps.Core.DTOs.Workout;
 using SetsnReps.Core.DTOs.Workout.Base;
@@ -35,6 +36,7 @@ public static class WorkoutRoutineExtensions
                 return TypedResults.Ok(result);
             })
             .WithName("GetWorkoutRoutineById");
+        
         
         group.MapPost("/", async Task<Results<Created<WorkoutRoutineResponse>, BadRequest>>
             (AddWorkoutRoutineRequest workoutRoutineRequest, IWorkoutRoutineService workoutRoutineService) =>
