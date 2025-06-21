@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj": {}
+    "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj": {}
   },
   "projects": {
-    "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj": {
+    "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj",
-        "projectName": "SetsnReps.API",
-        "projectPath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj",
+        "projectUniqueName": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj",
+        "projectName": "SetsnReps.Api",
+        "projectPath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj",
         "packagesPath": "C:\\Users\\leokporto\\.nuget\\packages\\",
-        "outputPath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\obj\\",
+        "outputPath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

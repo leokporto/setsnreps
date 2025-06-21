@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+onhkRRO4eQ=",
+  "dgSpecHash": "ul0A9U8M8ow=",
   "success": true,
-  "projectFilePath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.API\\SetsnReps.API.csproj",
+  "projectFilePath": "C:\\GithubRepos\\setsnreps\\backend\\SetsnReps.Api\\SetsnReps.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leokporto\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\leokporto\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.6\\microsoft.aspnetcore.authentication.jwtbearer.9.0.6.nupkg.sha512",

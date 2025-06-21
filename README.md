@@ -6,13 +6,14 @@
 
 ## ⚙️ Tech Stack
 
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - Minimal APIs
 - Entity Framework Core
 - PostgreSQL
 - Blazor WebAssembly
 - MudBlazor (UI Components)
-- JWT Authentication
+- JWT Authentication + Identity
+- Redis (for caching)
 - Docker (in progress)
 
 ---
@@ -22,9 +23,20 @@
 - ✅ Create and manage exercises
 - ✅ Log workouts (sets, reps, weight, notes)
 - ✅ View workout history
-- 🚧 User authentication
+- ✅ User authentication
+- 🚧 Redis Caching
 - 🚧 Sync with mobile (future with .NET MAUI)
 - 🚧 Export data (CSV, PDF)
+
+---
+
+---
+
+## :fire: Future Enhancements
+
+- Migrate user authentication to keycloak
+- Add support for multiple users
+- Add open-source observability
 
 ---
 
@@ -49,7 +61,7 @@
 
 ## 🧪 Running Locally
 
-### PgSql no docker (development and tests)
+### PgSql on docker (development and tests)
 1. Create a `.env` file in the docker directory with the following content:
    ```plaintext
    POSTGRES_PASSWORD=<YourPassword>
