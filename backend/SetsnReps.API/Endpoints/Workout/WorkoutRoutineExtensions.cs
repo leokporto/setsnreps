@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using SetsnReps.API.Contract.Services.Services.Workout;
-using SetsnReps.API.Migrations;
-using SetsnReps.API.Services.Workout;
 using SetsnReps.Core.DTOs.Workout;
 using SetsnReps.Core.DTOs.Workout.Base;
 
@@ -12,8 +10,7 @@ public static class WorkoutRoutineExtensions
     public static WebApplication UseWorkoutRoutineEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("/workout-routines")
-            .WithTags("Workout Routines")
-            .WithOpenApi();
+            .WithTags("Workout Routines");
 
         group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
             (IWorkoutRoutineService workoutRoutineService) =>

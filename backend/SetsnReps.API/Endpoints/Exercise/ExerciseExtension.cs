@@ -9,7 +9,7 @@ public static class ExerciseExtension
 {
     public static WebApplication UseExerciseEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("/exercise").WithOpenApi();
+        var group = app.MapGroup("/exercise");
         
         group.MapGet("/exercise/page/{page:int}", async Task<Results<Ok<IEnumerable<ExerciseResponse>>, NotFound>>
             (int page, ExerciseService exerciseSvc) =>

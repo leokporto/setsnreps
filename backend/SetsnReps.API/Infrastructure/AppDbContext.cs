@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SetsnReps.API.Entities;
 using SetsnReps.API.Infrastructure.Mappings;
 using SetsnReps.API.Infrastructure.Mappings.Workout;
 using SetsnReps.Domain.Entities.Exercise;
@@ -7,7 +10,9 @@ using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Infrastructure;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid,
+    IdentityUserClaim<Guid>, IdentityUserRole<Guid>, IdentityUserLogin<Guid>,
+    IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -32,6 +37,7 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder); // 🔥 ESSENCIAL
         
        // modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
        modelBuilder.ApplyConfiguration(new EquipmentTypeMapping());

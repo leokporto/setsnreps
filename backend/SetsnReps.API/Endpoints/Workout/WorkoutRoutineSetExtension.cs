@@ -12,8 +12,7 @@ public static class WorkoutRoutineSetExtension
     public static WebApplication UseWorkoutRoutineSetEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("workout-routine-sets")
-            .WithTags("WorkoutRoutineSet")
-            .WithOpenApi();
+            .WithTags("WorkoutRoutineSet");
             
         group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
             (IWorkoutRoutineSetService svc) =>
