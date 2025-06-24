@@ -17,7 +17,7 @@ public class WorkoutRoutine
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
-    public Guid? WorkoutRoutineSetId { get; set; }
+    public Guid WorkoutRoutineSetId { get; set; }
     
     public WorkoutRoutineSet? WorkoutRoutineSet { get; set; }
     

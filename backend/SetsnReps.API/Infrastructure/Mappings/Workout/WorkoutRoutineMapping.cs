@@ -18,7 +18,7 @@ public class WorkoutRoutineMapping : IEntityTypeConfiguration<WorkoutRoutine>
             .IsRequired(true);
 
         builder.Property(wr => wr.WorkoutRoutineSetId)
-            .IsRequired(false);
+            .IsRequired(true);
         builder.HasIndex(wr => wr.WorkoutRoutineSetId);
 
         

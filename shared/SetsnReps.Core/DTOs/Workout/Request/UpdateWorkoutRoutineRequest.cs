@@ -11,7 +11,7 @@ public class UpdateWorkoutRoutineRequest
     /// </summary>
     public string Name { get; set; } = string.Empty;
     
-    public Guid? WorkoutRoutineSetId { get; set; }
+    public Guid WorkoutRoutineSetId { get; set; }
     
     public ICollection<UpdateWorkoutExercise> Exercises { get; set; } = new List<UpdateWorkoutExercise>();
 }

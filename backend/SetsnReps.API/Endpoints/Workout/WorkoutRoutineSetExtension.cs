@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using SetsnReps.API.Contract.Services.Services.Workout;
+using SetsnReps.API.Extensions;
 using SetsnReps.API.Services.Workout;
 using SetsnReps.Core.DTOs.Workout;
 using SetsnReps.Core.DTOs.Workout.Base;
 using SetsnReps.Domain.Entities.Workout;
 
 namespace SetsnReps.API.Endpoints.Workout;
+
 
 public static class WorkoutRoutineSetExtension
 {
@@ -15,13 +17,19 @@ public static class WorkoutRoutineSetExtension
             .WithTags("WorkoutRoutineSet");
             
         group.MapGet("/", async Task<Results<Ok<IEnumerable<SimpleDtoResponse>>, NotFound>>
-            (IWorkoutRoutineSetService svc) =>
+            (IWorkoutRoutineSetService svc, HttpContext context) =>
             {
+                var userId = context.User.GetUserId();
+                if (userId == Guid.Empty)
+                    return TypedResults.NotFound();
+
+                //TODO: Fix all workoutroutineset queries and commands to use userId
                 var workoutRoutineSets = await svc.GetAllAsync();
-                return workoutRoutineSets is not null 
+                return workoutRoutineSets.Any()
                     ? TypedResults.Ok(workoutRoutineSets)
                     : TypedResults.NotFound();
             })
+            .RequireAuthorization()
             .WithName("GetAllWorkoutRoutineSets");
             
         group.MapGet("/{id:guid}", async Task<Results<Ok<WorkoutRoutineSetResponse>, NotFound>>

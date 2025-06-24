@@ -17,6 +17,11 @@ public class WorkoutRoutineSet
     public string Name { get; set; } = string.Empty;
     
     /// <summary>
+    /// The user identifier that this workout routine set belongs to.
+    /// </summary>
+    public Guid UserId { get; set; }
+    
+    /// <summary>
     /// A list of workout routines that are part of the workout routine set.
     /// </summary>
     public ICollection<WorkoutRoutine> WorkoutRoutines { get; set; } = new List<WorkoutRoutine>();
